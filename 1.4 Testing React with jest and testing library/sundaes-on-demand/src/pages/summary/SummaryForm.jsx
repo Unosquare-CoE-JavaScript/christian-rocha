@@ -1,39 +1,46 @@
-import { Form, Popover, OverlayTrigger, Button } from 'react-bootstrap';
+import React, { useState } from 'react';
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
+import Popover from 'react-bootstrap/Popover';
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 
-import { useState } from 'react';
-
-export default function SummaryForm() {
+export default function SummaryForm({ setOrderPhase }) {
   const [tcChecked, setTcChecked] = useState(false);
+
+  function handleSubmit(event) {
+    event.preventDefault();
+
+    // pass along to the next phase.
+    // The next page will handle submitting order from context.
+    setOrderPhase('completed');
+  }
+
   const popover = (
-    <Popover id='popover-basic'>
-      <Popover.Content>
-        No ice cream will actually be delivered
-      </Popover.Content>
+    <Popover id="termsandconditions-popover">
+      <Popover.Content>No ice cream will actually be delivered</Popover.Content>
     </Popover>
   );
-  
+
   const checkboxLabel = (
     <span>
-      I agree to 
-      <OverlayTrigger placement='right' overlay={popover}>
-        <span style={{color: 'blue'}}> Terms and Conditions</span>
+      I agree to
+      <OverlayTrigger placement="right" overlay={popover}>
+        <span style={{ color: 'blue' }}> Terms and Conditions</span>
       </OverlayTrigger>
     </span>
   );
 
-
   return (
-    <Form>
-      <Form.Group controlId='terms-and-conditions'>
+    <Form onSubmit={handleSubmit}>
+      <Form.Group controlId="terms-and-conditions">
         <Form.Check
-          type='checkbox'
+          type="checkbox"
           checked={tcChecked}
-          onChange={(ev) => setTcChecked(ev.target.checked)}
-          label={checkboxLabel} 
+          onChange={(e) => setTcChecked(e.target.checked)}
+          label={checkboxLabel}
         />
       </Form.Group>
-
-      <Button variant='primary' type='submit' disabled={!tcChecked}>
+      <Button variant="primary" type="submit" disabled={!tcChecked}>
         Confirm order
       </Button>
     </Form>
