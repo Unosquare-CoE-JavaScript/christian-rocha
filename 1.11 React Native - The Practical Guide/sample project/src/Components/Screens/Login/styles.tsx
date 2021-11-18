@@ -1,11 +1,15 @@
 import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
+  customTextMargin: {
+    marginTop: 50,
+  },
   container: {
-    display:'flex',
+    flex:1,
     backgroundColor: '#fff',
-    marginTop: 30,
     width:'100%',
+    height: '100%',
+    alignItems:'center'
   },
 });
 
