@@ -15,10 +15,7 @@
 
 
 ### Dedicated Workers
-  ##### Explanation
-  Web workers allow you to spawn a new environment for executing JavaScript in. JavaScript that is executed in this way is allowed to run in a separate thread from the JavaScript that spawned it. Communication occurs between these two environments by using a pattern called message passing. Recall that it’s JavaScript’s nature to be singlethreaded. Web workers play nicely with this nature and expose message passing by way of triggering functions to be run by the event loop. <br/>
-  It’s possible for a JavaScript environment to spawn more than one web worker, and a given web worker is free to spawn even more web workers. That said, if you find yourself spawning massive hierarchies of web workers, you might need to reevaluate your application. <br/>
-  There is more than one type of web worker, the simplest of which is the dedicated worker which is only accessible by the script that called it.
+  The Dedicated web worker, is the one that you can use it only from the script that calls it.
 
   ##### Hello world
 
